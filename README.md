@@ -1,4 +1,4 @@
-#gettags -- a simple utility for reading tags from MP3, Ogg, FLAC, M4A, and M4B files (and maybe others)</h1>
+# gettags -- a simple utility for reading tags from MP3, Ogg, FLAC, M4A, and M4B files (and maybe others)</h1>
 
 `gettags` is a simple, completely self-contained command-line 
 utility for 
