@@ -845,7 +845,10 @@ void tag_mp4_parse_ilst (const BYTE *ilist, int l, TagData *tag_data)
       Tag *tag = malloc (sizeof (Tag));
       tag->frameId = strdup (tag_name);
       tag->type = TAG_TYPE_TEXT;
-      tag->data = (unsigned char*) strdup ((char *)data);
+      // data_len includes 16 bytes of header material
+      tag->data = (unsigned char*) malloc (data_len + 1 - 16);
+      memcpy (tag->data, data, data_len - 16);
+      tag->data[data_len - 16] = 0;
       tag->next = p_tag;
       tag_data->tag = tag;
       }
