@@ -727,6 +727,15 @@ TagResult tag_get_flac_tags (const char *file, TagData **tag_data_ret)
 
 TagResult tag_get_ogg_tags (const char *file, TagData **tag_data_ret)
 {
+  TagData *tag_data = (TagData*) malloc (sizeof (TagData));
+  if (!tag_data)
+    {
+    *tag_data_ret = NULL; 
+    return TAG_OUTOFMEMORY;
+    }
+  *tag_data_ret = tag_data; 
+  memset (tag_data, 0, sizeof (TagData));
+
   int f = open (file, O_RDONLY | O_BINARY);
   if (f <= 0) return TAG_READERROR;
 
@@ -780,16 +789,6 @@ TagResult tag_get_ogg_tags (const char *file, TagData **tag_data_ret)
   read (f, buff, 1);
   segments = buff[0];
   lseek (f, page_start + 27 + segments + 7, SEEK_SET);
-
-  TagData *tag_data = (TagData*) malloc (sizeof (TagData));
-  if (!tag_data)
-    {
-    *tag_data_ret = NULL; 
-    return TAG_OUTOFMEMORY;
-    }
-
-  *tag_data_ret = tag_data; 
-  memset (tag_data, 0, sizeof (TagData));
 
   // Memory is cheap, especially if temporary. Need to be sure to capture
   //  all the comments, but it doesn't matter if we read too much
