@@ -98,7 +98,7 @@ void extract_cover (const char *argv0, const TagData *tag_data,
   {
   if (tag_data->cover)
     {
-    if (tag_data->cover_mime)
+    if (tag_data->cover_mime[0])
       {
       char full_filename[512];
       const char *ext = get_ext_from_mime (tag_data->cover_mime);
@@ -269,7 +269,7 @@ int main (int argc, char **argv)
   static BOOL opt_debug = FALSE;
   static BOOL opt_script = FALSE;
   static BOOL opt_common_only = FALSE;
-  char opt_common_name[32];
+  char opt_common_name[512];
   char opt_exact_name[32];
   char opt_cover_filename[512];
 
