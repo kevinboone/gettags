@@ -481,7 +481,7 @@ static TagResult tag_read_frame (int f, int version, int *carry_on,
  * anyway
  */
 TagResult tag_get_id3v2_tags (const char *file, TagData **tag_data_ret)
-{
+  {
   TagData *tag_data = (TagData*) malloc (sizeof (TagData));
   if (!tag_data)
     {
@@ -567,7 +567,7 @@ TagResult tag_get_id3v2_tags (const char *file, TagData **tag_data_ret)
 
   close (f);
   return r;
-}
+  }
 
 
 /**********************************************************************
@@ -949,7 +949,13 @@ TagResult tag_get_mp4_tags (const char *file, TagData **tag_data_ret)
     if (n == 4)
       {
       int l = tag_mp4_decode_32_bit_msb (buff);
- 
+      // l should be positive, unless this is a broken file
+      //   or, of course, a file that isn't an MP4
+      if (l < 0)       
+        {
+        done = TRUE;
+        continue;
+        }
       int n = read (f, buff, 4);
       if (n == 4)
         {
@@ -970,7 +976,9 @@ TagResult tag_get_mp4_tags (const char *file, TagData **tag_data_ret)
           free (atom);
           }
         if (!read_atom)
+          {
           lseek (f, l - 8, SEEK_CUR);
+          }
         }
       else
         {
@@ -1177,6 +1185,7 @@ TagResult tag_get_tags (const char *file, TagData **tag_data_ret)
       }
     }
   }
+
   return ret;
 }
 

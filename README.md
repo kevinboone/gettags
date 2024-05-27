@@ -1,5 +1,9 @@
 # gettags -- a simple utility for reading tags from MP3, Ogg, FLAC, M4A, and M4B files (and maybe others)</h1>
 
+Version 0.2b
+
+## What is this?
+
 `gettags` is a simple, completely self-contained command-line 
 utility for 
 reading metadata tags from
@@ -246,5 +250,14 @@ the original author continues to be identified.
 
 The latest source code can always be found in the
 <a href="http://github.com/kevinboone/gettags">Github repository</a>.
+
+## History
+
+0.2b May 2024
+Fixed a nasty bug that arose when trying to parse something as an MP4 file,
+that wasn't actually in MP4 format.
+
+
+
 
 

@@ -52,10 +52,10 @@ prints a tag if its type is text
 */
 void show_tag (const Tag *tag)
   {
-  printf (tag->frameId);
+  printf ("%s", tag->frameId);
   printf (" ");
   if (tag->type == TAG_TYPE_TEXT)
-    printf ((char*)tag->data);
+    printf ("%s", (char*)tag->data);
   else
     printf ("(binary)");
   printf ("\n");

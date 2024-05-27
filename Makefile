@@ -31,7 +31,7 @@ OBJS=main.o tag_reader.o
 
 
 APPS=$(APPBIN)
-VERSION=0.2a
+VERSION=0.2b
 
 DEBUG=1
 
