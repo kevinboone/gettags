@@ -1,7 +1,7 @@
 /*==========================================================================
 gettags
 main.c
-Copyright (c)2012-2018 Kevin Boone
+Copyright (c)2012-2024 Kevin Boone
 Distributed under the terms of the GNU Public Licence, v3.0
 ==========================================================================*/
   
@@ -365,7 +365,7 @@ int main (int argc, char **argv)
 
   if (opt_version)
     {
-    printf ("gettags version %s\nCopyright (c)2011-2018 Kevin Boone\n"
+    printf ("gettags version %s\nCopyright (c)2011-2024 Kevin Boone\n"
       "Distributed under the terms of the GNU Public Licence, v3.0\n", 
       VERSION);
     exit (0);
